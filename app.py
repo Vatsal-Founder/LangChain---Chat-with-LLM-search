@@ -10,9 +10,7 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-#api_key
 
-os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 
 api_wiki=WikipediaAPIWrapper(top_k_results=3,doc_content_chars_max=250)
 wiki=WikipediaQueryRun(api_wrapper=api_wiki)
@@ -25,8 +23,7 @@ search=DuckDuckGoSearchRun(name="Search")
 
 st.title("🔎 LangChain - Chat with search")
 
-
-#Search Agent
+api_key = st.text_input("Enter your Open AI API key:", type="password")
 
 if "messages" not in st.session_state:
     st.session_state["messages"]=[
@@ -40,7 +37,7 @@ if prompt:=st.chat_input(placeholder="What is machine learning?"):
     st.session_state.messages.append({"role":"user","content":prompt})
     st.chat_message("user").write(prompt)
 
-    llm=ChatOpenAI(model="gpt-4o",streaming=True)
+    llm=ChatOpenAI(api_key=api_key, model="gpt-4o",streaming=True)
     tools=[search,arxiv,wiki]
 
     search_agent=initialize_agent(tools,llm,agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,handling_parsing_errors=True)
