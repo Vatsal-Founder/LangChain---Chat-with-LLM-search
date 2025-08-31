@@ -26,6 +26,7 @@ search=DuckDuckGoSearchRun(name="Search")
 st.title("🔎 LangChain - Chat with search")
 
 
+#Search Agent
 
 if "messages" not in st.session_state:
     st.session_state["messages"]=[
