@@ -8,8 +8,7 @@ A conversational search app that uses **Wikipedia tools/agents** to find informa
 * 🧩 Built on **LangChain** with optional **LangSmith** tracing
 
 > Repo: `Vatsal-Founder/LangChain---Chat-with-LLM-search`
-
-Link:
+> Link: https://huggingface.co/spaces/vatsal18/LLM_Search
 ---
 
 ## Features
